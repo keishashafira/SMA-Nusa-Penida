@@ -42,7 +42,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-8.834574338199765,115.38178285852624],[-8.5827174569407,115.67623071704216]]);
+        }).fitBounds([[-8.860328577403468,115.38711958428723],[-8.620656153932085,115.66732249748014]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -357,6 +357,23 @@
         });
         bounds_group.addLayer(layer_SMAdiNusaPenida_4);
         map.addLayer(layer_SMAdiNusaPenida_4);
+        var baseMaps = {};
+        var overlaysTree = [
+            {label: '<img src="legend/SMAdiNusaPenida_4.png" /> SMA di Nusa Penida', layer: layer_SMAdiNusaPenida_4},
+            {label: '<img src="legend/JangkauanJalan_3.png" /> Jangkauan Jalan', layer: layer_JangkauanJalan_3},
+            {label: '<img src="legend/JaringanJalan_2.png" /> Jaringan Jalan', layer: layer_JaringanJalan_2},
+            {label: 'ADMINISTRASIKECAMATAN_AR<br /><table><tr><td style="text-align: center;"><img src="legend/ADMINISTRASIKECAMATAN_AR_1_Nusapenida0.png" /></td><td>Nusapenida</td></tr></table>', layer: layer_ADMINISTRASIKECAMATAN_AR_1},
+            {label: "Satellite Google", layer: layer_SatelliteGoogle_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: false, 
+        });
+        lay.addTo(map);
         setBounds();
         </script>
     </body>
